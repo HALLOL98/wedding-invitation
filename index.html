@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdelrahman & Alaa — Wedding Invitation</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Cursor glow for desktop -->
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- Global animated particles -->
+<div class="particle-layer" id="particleLayer" aria-hidden="true"></div>
+
+<!-- ============================================================
+     OPENING EXPERIENCE: ENVELOPE + WAX SEAL + CURTAINS
+============================================================= -->
+<div id="loader" class="opening-scene">
+
+  <div class="curtain curtain-left" aria-hidden="true">
+    <div class="curtain-folds"></div>
+  </div>
+
+  <div class="curtain curtain-right" aria-hidden="true">
+    <div class="curtain-folds"></div>
+  </div>
+
+  <div class="opening-glow opening-glow-one" aria-hidden="true"></div>
+  <div class="opening-glow opening-glow-two" aria-hidden="true"></div>
+
+  <div class="envelope-stage">
+
+    <p class="opening-kicker">
+      YOU ARE INVITED
+    </p>
+
+    <div class="envelope" id="envelope">
+
+      <div class="letter" id="letter">
+
+        <p class="bismillah" lang="ar" dir="rtl">
+          بسم الله الرحمن الرحيم
+        </p>
+
+        <p class="letter-small">
+          THE WEDDING OF
+        </p>
+
+        <h1>
+          Abdelrahman
+          <span>♥</span>
+          Alaa
+        </h1>
+
+        <p class="letter-date">
+          27 · 08 · 2026
+        </p>
+
+      </div>
+
+      <div class="envelope-back"></div>
+      <div class="envelope-pocket"></div>
+      <div class="envelope-flap" id="envelopeFlap"></div>
+
+      <button
+        class="wax-seal"
+        type="button"
+        onclick="openInvitation()"
+        aria-label="Open invitation"
+      >
+        <span class="seal-monogram">A</span>
+        <span class="seal-heart">♥</span>
+        <span class="seal-monogram">A</span>
+      </button>
+
+    </div>
+
+    <p class="seal-instruction">
+      Tap the seal to open
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- ============================================================
+     HERO
+============================================================= -->
+
+<section class="hero" id="hero">
+
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-vignette" aria-hidden="true"></div>
+
+  <div
+    class="botanical botanical-hero-left"
+    data-parallax="0.10"
+    aria-hidden="true"
+  >
+    <span class="stem"></span>
+    <span class="leaf leaf-a"></span>
+    <span class="leaf leaf-b"></span>
+    <span class="leaf leaf-c"></span>
+    <span class="bloom"></span>
+  </div>
+
+  <div
+    class="botanical botanical-hero-right"
+    data-parallax="0.16"
+    aria-hidden="true"
+  >
+    <span class="stem"></span>
+    <span class="leaf leaf-a"></span>
+    <span class="leaf leaf-b"></span>
+    <span class="leaf leaf-c"></span>
+    <span class="bloom"></span>
+  </div>
+
+  <div class="hero-content">
+
+    <p class="hero-small hero-animate hero-delay-1">
+      Together Forever
+    </p>
+
+    <div class="hero-names">
+
+      <span class="hero-name hero-name-left hero-animate hero-delay-2">
+        Abdelrahman
+      </span>
+
+      <span class="hero-heart hero-animate hero-delay-3">
+        ♥
+      </span>
+
+      <span class="hero-name hero-name-right hero-animate hero-delay-2">
+        Alaa
+      </span>
+
+    </div>
+
+    <div class="drawn-ornament hero-animate hero-delay-4">
+      <span></span>
+      <i>♡</i>
+      <span></span>
+    </div>
+
+    <button
+      class="hero-btn hero-animate hero-delay-5"
+      type="button"
+      onclick="goToWeddingDetails()"
+    >
+      View Invitation
+    </button>
+
+  </div>
+
+  <button
+    class="scroll-down"
+    type="button"
+    onclick="goToWeddingDetails()"
+    aria-label="Scroll to wedding details"
+  >
+    <span>SCROLL</span>
+    <i>↓</i>
+  </button>
+
+</section>
+
+
+<div class="floral-divider reveal" aria-hidden="true">
+  <span class="divider-line"></span>
+  <span class="divider-leaf left-leaf"></span>
+  <span class="divider-heart">♡</span>
+  <span class="divider-leaf right-leaf"></span>
+  <span class="divider-line"></span>
+</div>
+
+
+<!-- ============================================================
+     SAVE THE DATE
+============================================================= -->
+
+<section id="details" class="wedding-details reveal">
+
+  <div class="section-glow glow-right"></div>
+
+  <div
+    class="floating-shape floating-heart-outline shape-one"
+    data-parallax="0.08"
+  >
+    ♡
+  </div>
+
+  <div
+    class="floating-shape sparkle-symbol shape-two"
+    data-parallax="0.14"
+  >
+    ✦
+  </div>
+
+  <div class="section-inner">
+
+    <p class="section-eyebrow">
+      SAVE THE DATE
+    </p>
+
+    <h2 class="couple-heading">
+      Abdelrahman
+      <span>♥</span>
+      Alaa
+    </h2>
+
+    <div class="drawn-ornament">
+      <span></span>
+      <i>♡</i>
+      <span></span>
+    </div>
+
+    <div class="date-display date-reveal-group">
+
+      <span class="date-day animated-date">
+        27
+      </span>
+
+      <div class="date-middle animated-date-meta">
+
+        <span>
+          AUGUST
+        </span>
+
+        <small>
+          2026
+        </small>
+
+      </div>
+
+    </div>
+
+    <div class="event-information">
+
+      <div class="event-information-item detail-stagger">
+
+        <span class="info-label">
+          TIME
+        </span>
+
+        <p>
+          6:00 PM
+        </p>
+
+      </div>
+
+      <div class="vertical-divider"></div>
+
+      <div class="event-information-item detail-stagger">
+
+        <span class="info-label">
+          VENUE
+        </span>
+
+        <p>
+          The Palm Villa
+        </p>
+
+      </div>
+
+    </div>
+
+    <a
+      class="outline-btn magnetic-btn"
+      href="https://maps.app.goo.gl/z1LXjveXcukr7Ypa9?g_st=iw"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      VIEW LOCATION
+      <span class="button-arrow">↗</span>
+    </a>
+
+  </div>
+
+</section>
+
+
+<div class="floral-divider reveal" aria-hidden="true">
+  <span class="divider-line"></span>
+  <span class="divider-leaf left-leaf"></span>
+  <span class="divider-heart">♡</span>
+  <span class="divider-leaf right-leaf"></span>
+  <span class="divider-line"></span>
+</div>
+
+
+<!-- ============================================================
+     COUNTDOWN
+============================================================= -->
+
+<section id="countdown" class="countdown-section reveal">
+
+  <div
+    class="botanical botanical-countdown"
+    data-parallax="0.12"
+    aria-hidden="true"
+  >
+    <span class="stem"></span>
+    <span class="leaf leaf-a"></span>
+    <span class="leaf leaf-b"></span>
+    <span class="leaf leaf-c"></span>
+    <span class="bloom"></span>
+  </div>
+
+  <div class="section-inner">
+
+    <p class="section-eyebrow">
+      UNTIL WE SAY “I DO”
+    </p>
+
+    <h2>
+      The Countdown
+    </h2>
+
+    <div class="drawn-ornament">
+      <span></span>
+      <i>♡</i>
+      <span></span>
+    </div>
+
+    <div class="countdown-container">
+
+      <div class="countdown-box">
+        <div class="flip-number" id="days">00</div>
+        <small>DAYS</small>
+      </div>
+
+      <div class="countdown-box">
+        <div class="flip-number" id="hours">00</div>
+        <small>HOURS</small>
+      </div>
+
+      <div class="countdown-box">
+        <div class="flip-number" id="minutes">00</div>
+        <small>MINUTES</small>
+      </div>
+
+      <div class="countdown-box">
+        <div class="flip-number" id="seconds">00</div>
+        <small>SECONDS</small>
+      </div>
+
+    </div>
+
+    <p class="countdown-date">
+      AUGUST 27, 2026
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     OUR STORY
+============================================================= -->
+
+<section id="story" class="story-section reveal">
+
+  <div class="section-glow glow-left"></div>
+
+  <div
+    class="floating-shape petal-symbol story-petal-one"
+    data-parallax="0.08"
+  >
+    ❦
+  </div>
+
+  <div
+    class="floating-shape floating-heart-outline story-heart-one"
+    data-parallax="0.15"
+  >
+    ♡
+  </div>
+
+  <div class="section-inner story-inner">
+
+    <p class="section-eyebrow">
+      OUR STORY
+    </p>
+
+    <h2>
+      A Beautiful Beginning
+    </h2>
+
+    <div class="drawn-ornament">
+      <span></span>
+      <i>♡</i>
+      <span></span>
+    </div>
+
+    <div class="story-path">
+
+      <span class="story-path-line"></span>
+
+      <span class="story-path-heart">
+        ♥
+      </span>
+
+    </div>
+
+    <div class="story-text">
+
+      <p class="story-line">
+        Our story grew...
+      </p>
+
+      <p class="story-line">
+        And with it, our dream grew...
+      </p>
+
+      <p class="story-line">
+        And the most beautiful fate was bringing our hearts together.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     QUOTE
+============================================================= -->
+
+<section
+  class="love-quote-section reveal"
+  id="quoteSection"
+>
+
+  <div class="quote-noise"></div>
+  <div class="quote-orbit quote-orbit-one"></div>
+  <div class="quote-orbit quote-orbit-two"></div>
+
+  <div class="section-inner quote-inner">
+
+    <span class="large-quote">
+      “
+    </span>
+
+    <p
+      id="quoteText"
+      class="love-quote"
+      data-text="Two hearts, one story, and a lifetime ahead."
+    ></p>
+
+    <div class="quote-heart">
+      ♡
+    </div>
+
+    <p class="quote-names">
+      ABDELRAHMAN & ALAA
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     GALLERY
+     EMPTY NOW, READY FOR PHOTOS LATER
+============================================================= -->
+
+<section id="gallery" class="gallery-section reveal">
+
+  <div class="section-inner">
+
+    <p class="section-eyebrow">
+      OUR MOMENTS
+    </p>
+
+    <h2>
+      Our Gallery
+    </h2>
+
+    <div class="drawn-ornament">
+      <span></span>
+      <i>♡</i>
+      <span></span>
+    </div>
+
+    <p class="gallery-intro">
+      A collection of our favorite moments together.
+    </p>
+
+    <div class="gallery-grid">
+
+      <div class="gallery-placeholder gallery-large">
+        <div class="gallery-empty-mark">
+          <span>♡</span>
+          <small>PHOTO</small>
+        </div>
+      </div>
+
+      <div class="gallery-placeholder gallery-tall">
+        <div class="gallery-empty-mark">
+          <span>♡</span>
+          <small>PHOTO</small>
+        </div>
+      </div>
+
+      <div class="gallery-placeholder">
+        <div class="gallery-empty-mark">
+          <span>♡</span>
+          <small>PHOTO</small>
+        </div>
+      </div>
+
+      <div class="gallery-placeholder">
+        <div class="gallery-empty-mark">
+          <span>♡</span>
+          <small>PHOTO</small>
+        </div>
+      </div>
+
+      <div class="gallery-placeholder gallery-wide">
+        <div class="gallery-empty-mark">
+          <span>♡</span>
+          <small>PHOTO</small>
+        </div>
+      </div>
+
+      <div class="gallery-placeholder">
+        <div class="gallery-empty-mark">
+          <span>♡</span>
+          <small>PHOTO</small>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+
+  <button
+    class="lightbox-close"
+    id="lightboxClose"
+    type="button"
+  >
+    ×
+  </button>
+
+  <img id="lightboxImage" alt="Gallery preview">
+
+</div>
+
+
+<div class="floral-divider reveal" aria-hidden="true">
+  <span class="divider-line"></span>
+  <span class="divider-leaf left-leaf"></span>
+  <span class="divider-heart">♡</span>
+  <span class="divider-leaf right-leaf"></span>
+  <span class="divider-line"></span>
+</div>
+
+
+<!-- ============================================================
+     LOCATION
+============================================================= -->
+
+<section id="location" class="location-section reveal">
+
+  <div class="section-glow glow-right"></div>
+
+  <div class="section-inner">
+
+    <p class="section-eyebrow">
+      THE VENUE
+    </p>
+
+    <h2>
+      Where We'll Celebrate
+    </h2>
+
+    <div class="drawn-ornament">
+      <span></span>
+      <i>♡</i>
+      <span></span>
+    </div>
+
+    <div class="location-card">
+
+      <div class="location-card-inner-border"></div>
+
+      <div class="venue-pin">
+        <span class="pin-dot"></span>
+      </div>
+
+      <p class="location-small">
+        JOIN US AT
+      </p>
+
+      <h3>
+        The Palm Villa
+      </h3>
+
+      <p class="location-message">
+        We look forward to sharing this special evening with you.
+      </p>
+
+      <a
+        class="primary-btn magnetic-btn"
+        href="https://maps.app.goo.gl/z1LXjveXcukr7Ypa9?g_st=iw"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        VIEW ON GOOGLE MAPS
+        <span class="button-arrow">↗</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     MUSIC
+============================================================= -->
+
+<section id="music" class="music-section reveal">
+
+  <div
+    class="botanical botanical-music"
+    data-parallax="0.10"
+  >
+    <span class="stem"></span>
+    <span class="leaf leaf-a"></span>
+    <span class="leaf leaf-b"></span>
+    <span class="leaf leaf-c"></span>
+    <span class="bloom"></span>
+  </div>
+
+  <div class="section-inner">
+
+    <p class="section-eyebrow">
+      OUR SONG
+    </p>
+
+    <h2>
+      The Soundtrack to Our Story
+    </h2>
+
+    <div class="drawn-ornament">
+      <span></span>
+      <i>♡</i>
+      <span></span>
+    </div>
+
+    <div class="music-card" id="musicCard">
+
+      <div class="vinyl-wrap">
+
+        <div class="music-disc" id="musicDisc">
+
+          <div class="vinyl-rings"></div>
+
+          <div class="music-disc-label">
+            A ♥ A
+          </div>
+
+        </div>
+
+        <div class="tonearm" id="tonearm">
+
+          <span class="tonearm-base"></span>
+          <span class="tonearm-arm"></span>
+          <span class="tonearm-head"></span>
+
+        </div>
+
+      </div>
+
+      <div class="music-information">
+
+        <p class="now-playing">
+          OUR SONG
+        </p>
+
+        <h3>
+          El Leil We Samah
+          <br>
+          We Negoomoh We Amaroh
+        </h3>
+
+        <div class="equalizer" id="equalizer">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <button
+          id="musicButton"
+          class="music-button magnetic-btn"
+          type="button"
+          onclick="toggleMusic()"
+        >
+          <span id="musicIcon">▶</span>
+          <span id="musicText">Play Song</span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <audio id="weddingSong"></audio>
+
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     RSVP
+============================================================= -->
+
+<section id="rsvp" class="rsvp-section reveal">
+
+  <div class="section-inner rsvp-inner">
+
+    <p class="section-eyebrow">
+      RSVP
+    </p>
+
+    <h2>
+      Will You Celebrate With Us?
+    </h2>
+
+    <div class="rsvp-heart-wrap">
+
+      <span class="rsvp-heart">
+        ♥
+      </span>
+
+      <span class="rsvp-heart-ring"></span>
+
+    </div>
+
+    <p class="rsvp-message">
+      Your presence will make our celebration even more special.
+    </p>
+
+    <div class="rsvp-placeholder">
+
+      <span>
+        RSVP DETAILS
+      </span>
+
+      <p>
+        This space is ready for your WhatsApp confirmation or RSVP form later.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     FINAL
+============================================================= -->
+
+<section
+  class="final-section reveal"
+  id="finalSection"
+>
+
+  <div class="final-stars">
+
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </div>
+
+  <div class="final-content">
+
+    <p class="final-label">
+      WITH LOVE
+    </p>
+
+    <h2>
+
+      <span class="final-name">
+        Abdelrahman
+      </span>
+
+      <em>&</em>
+
+      <span class="final-name">
+        Alaa
+      </span>
+
+    </h2>
+
+    <div class="final-heart">
+      ♥
+    </div>
+
+    <p class="final-date">
+      27 · 08 · 2026
+    </p>
+
+    <p class="final-message">
+      See you on our special day.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- KEEP THIS SCRIPT INSIDE HTML -->
+
+<script>
+
+function openInvitation() {
+
+  const loader =
+    document.getElementById('loader');
+
+  if (
+    !loader ||
+    loader.classList.contains('opening')
+  ) {
+    return;
+  }
+
+  loader.classList.add('opening');
+
+  if (
+    typeof window.createOpeningBurst === 'function'
+  ) {
+    window.createOpeningBurst();
+  }
+
+  setTimeout(() => {
+
+    loader.classList.add(
+      'curtains-open'
+    );
+
+  }, 850);
+
+
+  setTimeout(() => {
+
+    loader.classList.add(
+      'opening-fade'
+    );
+
+  }, 2350);
+
+
+  setTimeout(() => {
+
+    loader.style.display =
+      'none';
+
+    document
+      .getElementById('hero')
+      .scrollIntoView({
+        behavior:'smooth'
+      });
+
+  }, 3150);
+
+}
+
+
+function goToWeddingDetails() {
+
+  document
+    .getElementById('details')
+    .scrollIntoView({
+      behavior:'smooth'
+    });
+
+}
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
