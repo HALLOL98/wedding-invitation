@@ -21,7 +21,7 @@ box-sizing:border-box;
 --shadow:0 22px 60px rgba(70,40,45,.10);
 
 /* هنا هنضيف صورة الـHero بعدين */
---hero-image:url('images/background.jpg');
+--hero-image:url('images/background.jpg.jfif');
 }
 
 html{
