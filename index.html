@@ -11,16 +11,6 @@
 <!-- Cursor glow for desktop -->
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-<!-- Small floating music button -->
-<button
-  id="musicButton"
-  class="floating-music-btn"
-  type="button"
-  onclick="toggleMusic()"
-  aria-label="Play wedding song"
->
-  <span id="musicIcon">▶</span>
-</button>
 <span id="musicText" class="sr-only"></span>
 <audio id="weddingSong" src="music/wedding-song.mp3"></audio>
 
@@ -93,6 +83,17 @@
     <p class="seal-instruction">
       Tap the seal to open
     </p>
+
+    <button
+      id="musicButton"
+      class="inline-music-btn"
+      type="button"
+      onclick="toggleMusic()"
+      aria-label="Play wedding song"
+    >
+      <span id="musicIcon">▶</span>
+      <span class="inline-music-label">Play our song</span>
+    </button>
 
   </div>
 
@@ -774,6 +775,17 @@ function openInvitation() {
     typeof window.createOpeningBurst === 'function'
   ) {
     window.createOpeningBurst();
+  }
+
+  const song =
+    document.getElementById('weddingSong');
+
+  if (
+    song &&
+    song.paused &&
+    typeof window.toggleMusic === 'function'
+  ) {
+    window.toggleMusic();
   }
 
   setTimeout(() => {
