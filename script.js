@@ -302,109 +302,6 @@ element.classList.add(
 }
 
 
-/* QUOTE */
-
-const quoteSection =
-document.getElementById(
-'quoteSection'
-);
-
-const quoteText =
-document.getElementById(
-'quoteText'
-);
-
-let quoteStarted =
-false;
-
-
-function typeQuote(){
-
-if(
-!quoteText ||
-quoteStarted
-){
-return;
-}
-
-quoteStarted =
-true;
-
-const fullText =
-quoteText.dataset.text || '';
-
-let index =
-0;
-
-const timer =
-setInterval(() => {
-
-quoteText.textContent =
-fullText.slice(
-0,
-index + 1
-);
-
-index += 1;
-
-if(
-index >=
-fullText.length
-){
-
-clearInterval(
-timer
-);
-
-}
-
-},55);
-
-}
-
-
-if(
-quoteSection &&
-'IntersectionObserver'
-in window
-){
-
-const quoteObserver =
-new IntersectionObserver(
-(entries) => {
-
-entries.forEach(
-(entry) => {
-
-if(
-entry.isIntersecting
-){
-
-setTimeout(
-typeQuote,
-350
-);
-
-quoteObserver.disconnect();
-
-}
-
-}
-);
-
-},
-{
-threshold:.45
-}
-);
-
-quoteObserver.observe(
-quoteSection
-);
-
-}
-
-
 /* FALLING HEARTS + PETALS */
 
 const particleLayer =
@@ -921,6 +818,11 @@ document.getElementById(
 'musicText'
 );
 
+const musicButton =
+document.getElementById(
+'musicButton'
+);
+
 
 if(disc){
 
@@ -943,6 +845,15 @@ isPlaying
 if(equalizer){
 
 equalizer.classList.toggle(
+'playing',
+isPlaying
+);
+
+}
+
+if(musicButton){
+
+musicButton.classList.toggle(
 'playing',
 isPlaying
 );
@@ -989,8 +900,7 @@ document.getElementById(
 
 if(
 !audio ||
-!musicIcon ||
-!musicText
+!musicIcon
 ){
 return;
 }
@@ -1004,8 +914,12 @@ if(
 musicIcon.textContent =
 '♪';
 
+if(musicText){
+
 musicText.textContent =
 'Add Song File Later';
+
+}
 
 return;
 }
@@ -1029,8 +943,12 @@ true
 musicIcon.textContent =
 '!';
 
+if(musicText){
+
 musicText.textContent =
 'Unable to Play';
+
+}
 
 });
 
@@ -1215,6 +1133,124 @@ closeLightbox();
 
 }
 );
+
+
+/* RSVP FORM */
+
+let rsvpAttending =
+null;
+
+/* TODO: غيّر الرقم ده لرقم واتساب العريس/العروسة
+   بصيغة دولية من غير + ومن غير صفر في الأول
+   مثال لمصر: 201001234567 */
+const rsvpWhatsAppNumber =
+'201203224768';
+
+function setAttendance(
+isYes
+){
+
+rsvpAttending =
+isYes;
+
+const yesBtn =
+document.getElementById(
+'rsvpYes'
+);
+
+const noBtn =
+document.getElementById(
+'rsvpNo'
+);
+
+if(yesBtn){
+
+yesBtn.classList.toggle(
+'selected',
+isYes
+);
+
+}
+
+if(noBtn){
+
+noBtn.classList.toggle(
+'selected',
+!isYes
+);
+
+}
+
+}
+
+window.setAttendance =
+setAttendance;
+
+
+function submitRsvp(){
+
+const nameInput =
+document.getElementById(
+'rsvpName'
+);
+
+const songInput =
+document.getElementById(
+'rsvpSong'
+);
+
+const name =
+nameInput
+? nameInput.value.trim()
+: '';
+
+const song =
+songInput
+? songInput.value.trim()
+: '';
+
+if(!name){
+
+alert(
+'Please enter your name.'
+);
+
+return;
+}
+
+if(
+rsvpAttending === null
+){
+
+alert(
+'Please let us know if you will attend.'
+);
+
+return;
+}
+
+let message =
+`RSVP - Abdelrahman & Alaa Wedding%0AName: ${name}%0AAttending: ${rsvpAttending ? 'Yes' : 'No'}`;
+
+if(song){
+
+message +=
+`%0ASong Request: ${song}`;
+
+}
+
+const url =
+`https://wa.me/${rsvpWhatsAppNumber}?text=${message}`;
+
+window.open(
+url,
+'_blank'
+);
+
+}
+
+window.submitRsvp =
+submitRsvp;
 
 
 /* FINALE */
