@@ -11,6 +11,19 @@
 <!-- Cursor glow for desktop -->
 <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
+<!-- Small floating music button -->
+<button
+  id="musicButton"
+  class="floating-music-btn"
+  type="button"
+  onclick="toggleMusic()"
+  aria-label="Play wedding song"
+>
+  <span id="musicIcon">▶</span>
+</button>
+<span id="musicText" class="sr-only"></span>
+<audio id="weddingSong"></audio>
+
 <!-- Global animated particles -->
 <div class="particle-layer" id="particleLayer" aria-hidden="true"></div>
 
@@ -431,44 +444,6 @@
 
 
 <!-- ============================================================
-     QUOTE
-============================================================= -->
-
-<section
-  class="love-quote-section reveal"
-  id="quoteSection"
->
-
-  <div class="quote-noise"></div>
-  <div class="quote-orbit quote-orbit-one"></div>
-  <div class="quote-orbit quote-orbit-two"></div>
-
-  <div class="section-inner quote-inner">
-
-    <span class="large-quote">
-      “
-    </span>
-
-    <p
-      id="quoteText"
-      class="love-quote"
-      data-text="Two hearts, one story, and a lifetime ahead."
-    ></p>
-
-    <div class="quote-heart">
-      ♡
-    </div>
-
-    <p class="quote-names">
-      ABDELRAHMAN & ALAA
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ============================================================
      GALLERY
      EMPTY NOW, READY FOR PHOTOS LATER
 ============================================================= -->
@@ -504,28 +479,7 @@
         </div>
       </div>
 
-      <div class="gallery-placeholder gallery-tall">
-        <div class="gallery-empty-mark">
-          <span>♡</span>
-          <small>PHOTO</small>
-        </div>
-      </div>
-
       <div class="gallery-placeholder">
-        <div class="gallery-empty-mark">
-          <span>♡</span>
-          <small>PHOTO</small>
-        </div>
-      </div>
-
-      <div class="gallery-placeholder">
-        <div class="gallery-empty-mark">
-          <span>♡</span>
-          <small>PHOTO</small>
-        </div>
-      </div>
-
-      <div class="gallery-placeholder gallery-wide">
         <div class="gallery-empty-mark">
           <span>♡</span>
           <small>PHOTO</small>
@@ -632,104 +586,6 @@
 
 
 <!-- ============================================================
-     MUSIC
-============================================================= -->
-
-<section id="music" class="music-section reveal">
-
-  <div
-    class="botanical botanical-music"
-    data-parallax="0.10"
-  >
-    <span class="stem"></span>
-    <span class="leaf leaf-a"></span>
-    <span class="leaf leaf-b"></span>
-    <span class="leaf leaf-c"></span>
-    <span class="bloom"></span>
-  </div>
-
-  <div class="section-inner">
-
-    <p class="section-eyebrow">
-      OUR SONG
-    </p>
-
-    <h2>
-      The Soundtrack to Our Story
-    </h2>
-
-    <div class="drawn-ornament">
-      <span></span>
-      <i>♡</i>
-      <span></span>
-    </div>
-
-    <div class="music-card" id="musicCard">
-
-      <div class="vinyl-wrap">
-
-        <div class="music-disc" id="musicDisc">
-
-          <div class="vinyl-rings"></div>
-
-          <div class="music-disc-label">
-            A ♥ A
-          </div>
-
-        </div>
-
-        <div class="tonearm" id="tonearm">
-
-          <span class="tonearm-base"></span>
-          <span class="tonearm-arm"></span>
-          <span class="tonearm-head"></span>
-
-        </div>
-
-      </div>
-
-      <div class="music-information">
-
-        <p class="now-playing">
-          OUR SONG
-        </p>
-
-        <h3>
-          El Leil We Samah
-          <br>
-          We Negoomoh We Amaroh
-        </h3>
-
-        <div class="equalizer" id="equalizer">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <button
-          id="musicButton"
-          class="music-button magnetic-btn"
-          type="button"
-          onclick="toggleMusic()"
-        >
-          <span id="musicIcon">▶</span>
-          <span id="musicText">Play Song</span>
-        </button>
-
-      </div>
-
-    </div>
-
-    <audio id="weddingSong"></audio>
-
-  </div>
-
-</section>
-
-
-<!-- ============================================================
      RSVP
 ============================================================= -->
 
@@ -759,15 +615,55 @@
       Your presence will make our celebration even more special.
     </p>
 
-    <div class="rsvp-placeholder">
+    <div class="rsvp-form" id="rsvpForm">
 
-      <span>
-        RSVP DETAILS
-      </span>
+      <div class="rsvp-field">
+        <label for="rsvpName">YOUR NAME</label>
+        <input
+          type="text"
+          id="rsvpName"
+          placeholder="Enter your full name"
+        >
+      </div>
 
-      <p>
-        This space is ready for your WhatsApp confirmation or RSVP form later.
-      </p>
+      <div class="rsvp-field">
+        <span class="rsvp-field-label">WILL YOU ATTEND?</span>
+        <div class="rsvp-toggle-group">
+          <button
+            type="button"
+            class="rsvp-toggle-btn"
+            id="rsvpYes"
+            onclick="setAttendance(true)"
+          >
+            Yes, I'll be there
+          </button>
+          <button
+            type="button"
+            class="rsvp-toggle-btn"
+            id="rsvpNo"
+            onclick="setAttendance(false)"
+          >
+            Can't make it
+          </button>
+        </div>
+      </div>
+
+      <div class="rsvp-field">
+        <label for="rsvpSong">SONG REQUEST (OPTIONAL)</label>
+        <input
+          type="text"
+          id="rsvpSong"
+          placeholder="A song you'd love to hear"
+        >
+      </div>
+
+      <button
+        type="button"
+        class="rsvp-submit-btn magnetic-btn"
+        onclick="submitRsvp()"
+      >
+        SEND RSVP
+      </button>
 
     </div>
 
