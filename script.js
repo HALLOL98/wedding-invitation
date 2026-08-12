@@ -991,90 +991,164 @@ false
 }
 
 
-/* GALLERY LIGHTBOX */
+/* GALLERY STACKED CAROUSEL */
 
-const lightbox =
+const carouselStack =
 document.getElementById(
-'lightbox'
+'carouselStack'
 );
 
-const lightboxImage =
-document.getElementById(
-'lightboxImage'
-);
+const carouselCards =
+carouselStack
+? Array.from(
+carouselStack.querySelectorAll(
+'.carousel-card'
+)
+)
+: [];
 
-const lightboxClose =
-document.getElementById(
-'lightboxClose'
-);
+let carouselIndex =
+0;
 
-
-function closeLightbox(){
+function renderCarousel(){
 
 if(
-!lightbox
+!carouselCards.length
 ){
 return;
 }
 
-lightbox.classList.remove(
-'open'
+carouselCards.forEach(
+(card, i) => {
+
+card.classList.remove(
+'stack-active',
+'stack-next-1',
+'stack-next-2',
+'stack-hidden'
 );
 
-lightbox.setAttribute(
-'aria-hidden',
-'true'
-);
+const offset =
+(
+i -
+carouselIndex +
+carouselCards.length
+)
+%
+carouselCards.length;
 
 if(
-lightboxImage
+offset === 0
 ){
 
-lightboxImage.removeAttribute(
-'src'
+card.classList.add(
+'stack-active'
+);
+
+}else if(
+offset === 1
+){
+
+card.classList.add(
+'stack-next-1'
+);
+
+}else if(
+offset === 2
+){
+
+card.classList.add(
+'stack-next-2'
+);
+
+}else{
+
+card.classList.add(
+'stack-hidden'
 );
 
 }
 
 }
+);
 
+}
 
-document
-.querySelectorAll(
-'.gallery-placeholder'
+function advanceCarousel(){
+
+if(
+!carouselCards.length
+){
+return;
+}
+
+const activeCard =
+carouselCards[
+carouselIndex
+];
+
+if(activeCard){
+
+activeCard.classList.add(
+'stack-exit'
+);
+
+setTimeout(() => {
+
+activeCard.classList.remove(
+'stack-exit'
+);
+
+},560);
+
+}
+
+carouselIndex =
+(
+carouselIndex + 1
 )
-.forEach(
-(item) => {
+%
+carouselCards.length;
 
-item.addEventListener(
+renderCarousel();
+
+}
+
+function retreatCarousel(){
+
+if(
+!carouselCards.length
+){
+return;
+}
+
+carouselIndex =
+(
+carouselIndex -
+1 +
+carouselCards.length
+)
+%
+carouselCards.length;
+
+renderCarousel();
+
+}
+
+if(
+carouselCards.length
+){
+
+renderCarousel();
+
+carouselCards.forEach(
+(card) => {
+
+card.addEventListener(
 'click',
 () => {
 
-const image =
-item.querySelector(
-'img'
-);
-
-if(
-!image ||
-!lightbox ||
-!lightboxImage
-){
-return;
-}
-
-lightboxImage.src =
-image.currentSrc ||
-image.src;
-
-lightbox.classList.add(
-'open'
-);
-
-lightbox.setAttribute(
-'aria-hidden',
-'false'
-);
+advanceCarousel();
 
 }
 );
@@ -1082,57 +1156,100 @@ lightbox.setAttribute(
 }
 );
 
-
-if(
-lightboxClose
-){
-
-lightboxClose.addEventListener(
-'click',
-closeLightbox
+const carouselNext =
+document.getElementById(
+'carouselNext'
 );
 
-}
+const carouselPrev =
+document.getElementById(
+'carouselPrev'
+);
 
+if(carouselNext){
 
-if(
-lightbox
-){
-
-lightbox.addEventListener(
+carouselNext.addEventListener(
 'click',
 (event) => {
 
-if(
-event.target ===
-lightbox
-){
+event.stopPropagation();
 
-closeLightbox();
-
-}
+advanceCarousel();
 
 }
 );
 
 }
 
+if(carouselPrev){
 
-window.addEventListener(
-'keydown',
+carouselPrev.addEventListener(
+'click',
 (event) => {
 
-if(
-event.key ===
-'Escape'
-){
+event.stopPropagation();
 
-closeLightbox();
-
-}
+retreatCarousel();
 
 }
 );
+
+}
+
+
+let touchStartX =
+0;
+
+carouselStack.addEventListener(
+'touchstart',
+(event) => {
+
+touchStartX =
+event.touches[0].clientX;
+
+},
+{
+passive:true
+}
+);
+
+carouselStack.addEventListener(
+'touchend',
+(event) => {
+
+const touchEndX =
+event.changedTouches[0].clientX;
+
+const diff =
+touchStartX -
+touchEndX;
+
+if(
+Math.abs(diff) > 40
+){
+
+if(
+diff > 0
+){
+
+advanceCarousel();
+
+}else{
+
+retreatCarousel();
+
+}
+
+}
+
+},
+{
+passive:true
+}
+);
+
+}
+
 
 
 /* RSVP FORM */
@@ -1144,7 +1261,7 @@ null;
    بصيغة دولية من غير + ومن غير صفر في الأول
    مثال لمصر: 201001234567 */
 const rsvpWhatsAppNumber =
-'201203224768';
+'201000000000';
 
 function setAttendance(
 isYes
