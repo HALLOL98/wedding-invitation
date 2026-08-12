@@ -991,265 +991,6 @@ false
 }
 
 
-/* GALLERY STACKED CAROUSEL */
-
-const carouselStack =
-document.getElementById(
-'carouselStack'
-);
-
-const carouselCards =
-carouselStack
-? Array.from(
-carouselStack.querySelectorAll(
-'.carousel-card'
-)
-)
-: [];
-
-let carouselIndex =
-0;
-
-function renderCarousel(){
-
-if(
-!carouselCards.length
-){
-return;
-}
-
-carouselCards.forEach(
-(card, i) => {
-
-card.classList.remove(
-'stack-active',
-'stack-next-1',
-'stack-next-2',
-'stack-hidden'
-);
-
-const offset =
-(
-i -
-carouselIndex +
-carouselCards.length
-)
-%
-carouselCards.length;
-
-if(
-offset === 0
-){
-
-card.classList.add(
-'stack-active'
-);
-
-}else if(
-offset === 1
-){
-
-card.classList.add(
-'stack-next-1'
-);
-
-}else if(
-offset === 2
-){
-
-card.classList.add(
-'stack-next-2'
-);
-
-}else{
-
-card.classList.add(
-'stack-hidden'
-);
-
-}
-
-}
-);
-
-}
-
-function advanceCarousel(){
-
-if(
-!carouselCards.length
-){
-return;
-}
-
-const activeCard =
-carouselCards[
-carouselIndex
-];
-
-if(activeCard){
-
-activeCard.classList.add(
-'stack-exit'
-);
-
-setTimeout(() => {
-
-activeCard.classList.remove(
-'stack-exit'
-);
-
-},560);
-
-}
-
-carouselIndex =
-(
-carouselIndex + 1
-)
-%
-carouselCards.length;
-
-renderCarousel();
-
-}
-
-function retreatCarousel(){
-
-if(
-!carouselCards.length
-){
-return;
-}
-
-carouselIndex =
-(
-carouselIndex -
-1 +
-carouselCards.length
-)
-%
-carouselCards.length;
-
-renderCarousel();
-
-}
-
-if(
-carouselCards.length
-){
-
-renderCarousel();
-
-carouselCards.forEach(
-(card) => {
-
-card.addEventListener(
-'click',
-() => {
-
-advanceCarousel();
-
-}
-);
-
-}
-);
-
-const carouselNext =
-document.getElementById(
-'carouselNext'
-);
-
-const carouselPrev =
-document.getElementById(
-'carouselPrev'
-);
-
-if(carouselNext){
-
-carouselNext.addEventListener(
-'click',
-(event) => {
-
-event.stopPropagation();
-
-advanceCarousel();
-
-}
-);
-
-}
-
-if(carouselPrev){
-
-carouselPrev.addEventListener(
-'click',
-(event) => {
-
-event.stopPropagation();
-
-retreatCarousel();
-
-}
-);
-
-}
-
-
-let touchStartX =
-0;
-
-carouselStack.addEventListener(
-'touchstart',
-(event) => {
-
-touchStartX =
-event.touches[0].clientX;
-
-},
-{
-passive:true
-}
-);
-
-carouselStack.addEventListener(
-'touchend',
-(event) => {
-
-const touchEndX =
-event.changedTouches[0].clientX;
-
-const diff =
-touchStartX -
-touchEndX;
-
-if(
-Math.abs(diff) > 40
-){
-
-if(
-diff > 0
-){
-
-advanceCarousel();
-
-}else{
-
-retreatCarousel();
-
-}
-
-}
-
-},
-{
-passive:true
-}
-);
-
-}
-
 
 
 /* RSVP FORM */
@@ -1257,11 +998,8 @@ passive:true
 let rsvpAttending =
 null;
 
-/* TODO: غيّر الرقم ده لرقم واتساب العريس/العروسة
-   بصيغة دولية من غير + ومن غير صفر في الأول
-   مثال لمصر: 201001234567 */
-const rsvpWhatsAppNumber =
-'201000000000';
+const rsvpSheetUrl =
+'https://script.google.com/macros/s/AKfycbxNHpXqe41sXtXd8E7jtfKrGlVdbUFvc6UP3Uyf5akCncBlTrfdjjgEhiqwXmtvdVoK/exec';
 
 function setAttendance(
 isYes
@@ -1316,6 +1054,16 @@ document.getElementById(
 'rsvpSong'
 );
 
+const submitBtn =
+document.querySelector(
+'.rsvp-submit-btn'
+);
+
+const successMessage =
+document.getElementById(
+'rsvpSuccess'
+);
+
 const name =
 nameInput
 ? nameInput.value.trim()
@@ -1346,23 +1094,64 @@ alert(
 return;
 }
 
-let message =
-`RSVP - Abdelrahman & Alaa Wedding%0AName: ${name}%0AAttending: ${rsvpAttending ? 'Yes' : 'No'}`;
+if(submitBtn){
 
-if(song){
+submitBtn.disabled =
+true;
 
-message +=
-`%0ASong Request: ${song}`;
+submitBtn.textContent =
+'SENDING...';
 
 }
 
-const url =
-`https://wa.me/${rsvpWhatsAppNumber}?text=${message}`;
+const payload =
+{
+name:name,
+attending:
+rsvpAttending
+? 'Yes'
+: 'No',
+song:song
+};
 
-window.open(
-url,
-'_blank'
+fetch(
+rsvpSheetUrl,
+{
+method:'POST',
+mode:'no-cors',
+headers:
+{
+'Content-Type':
+'text/plain'
+},
+body:
+JSON.stringify(
+payload
+)
+}
+)
+.finally(() => {
+
+const formFields =
+document.getElementById(
+'rsvpForm'
 );
+
+if(formFields){
+
+formFields.style.display =
+'none';
+
+}
+
+if(successMessage){
+
+successMessage.style.display =
+'block';
+
+}
+
+});
 
 }
 
