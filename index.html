@@ -471,46 +471,76 @@
       A collection of our favorite moments together.
     </p>
 
-    <div class="gallery-grid">
+    <div class="gallery-carousel" id="galleryCarousel">
 
-      <div class="gallery-placeholder">
-        <img src="images/gallery-1.jpg" alt="Abdelrahman and Alaa">
+      <div class="carousel-stack" id="carouselStack">
+
+        <div class="carousel-card">
+          <img src="images/gallery-1.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-4.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-5.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-6.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-7.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-8.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-9.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-10.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-11.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/gallery-2.jpg" alt="Abdelrahman and Alaa">
+        </div>
+
       </div>
 
-      <div class="gallery-placeholder">
-        <img src="images/gallery-2.jpg" alt="Abdelrahman and Alaa">
-      </div>
+      <div class="carousel-controls">
 
-      <div class="gallery-placeholder">
-        <img src="images/gallery-4.jpg" alt="Abdelrahman and Alaa">
-      </div>
+        <button
+          type="button"
+          class="carousel-btn"
+          id="carouselPrev"
+          aria-label="Previous photo"
+        >
+          ‹
+        </button>
 
-      <div class="gallery-placeholder">
-        <img src="images/gallery-5.jpg" alt="Abdelrahman and Alaa">
-      </div>
+        <p class="carousel-hint">
+          Tap to see the next photo
+        </p>
 
-      <div class="gallery-placeholder">
-        <img src="images/gallery-6.jpg" alt="Abdelrahman and Alaa">
-      </div>
+        <button
+          type="button"
+          class="carousel-btn"
+          id="carouselNext"
+          aria-label="Next photo"
+        >
+          ›
+        </button>
 
-      <div class="gallery-placeholder">
-        <img src="images/gallery-7.jpg" alt="Abdelrahman and Alaa">
-      </div>
-
-      <div class="gallery-placeholder">
-        <img src="images/gallery-8.jpg" alt="Abdelrahman and Alaa">
-      </div>
-
-      <div class="gallery-placeholder">
-        <img src="images/gallery-9.jpg" alt="Abdelrahman and Alaa">
-      </div>
-
-      <div class="gallery-placeholder">
-        <img src="images/gallery-10.jpg" alt="Abdelrahman and Alaa">
-      </div>
-
-      <div class="gallery-placeholder">
-        <img src="images/gallery-11.jpg" alt="Abdelrahman and Alaa">
       </div>
 
     </div>
@@ -518,21 +548,6 @@
   </div>
 
 </section>
-
-
-<div class="lightbox" id="lightbox" aria-hidden="true">
-
-  <button
-    class="lightbox-close"
-    id="lightboxClose"
-    type="button"
-  >
-    ×
-  </button>
-
-  <img id="lightboxImage" alt="Gallery preview">
-
-</div>
 
 
 
