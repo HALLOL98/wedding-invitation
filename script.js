@@ -999,7 +999,7 @@ let rsvpAttending =
 null;
 
 const rsvpSheetUrl =
-'https://script.google.com/macros/s/AKfycbxNHpXqe41sXtXd8E7jtfKrGlVdbUFvc6UP3Uyf5akCncBlTrfdjjgEhiqwXmtvdVoK/exec';
+'https://script.google.com/macros/s/AKfycbzbufaLLJjKdLaPhet9XlsJZzFlkCHcZUiJU8tlGnMJfQpOzBOGvRd_PL9g5wgQ3fLb0A/exec';
 
 function setAttendance(
 isYes
